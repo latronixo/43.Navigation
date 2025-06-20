@@ -9,10 +9,16 @@ import SwiftUI
 
 struct DetailView: View {
     var number: Int
+    @Binding var path: [Int]
     
     var body: some View {
         NavigationLink("Go to Random Number", value: Int.random(in: 1...1000))
             .navigationTitle("Number: \(number)")
+            .toolbar {
+                Button("Home") {
+                    path.removeAll()
+                }
+            }
     }
 }
 
@@ -21,9 +27,9 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack (path: $path) {
-            DetailView(number: 0)
+            DetailView(number: 0, path: $path)
                 .navigationDestination(for: Int.self) { i in
-                    DetailView(number: i)
+                    DetailView(number: i, path: $path)
                 }
         }
     }
