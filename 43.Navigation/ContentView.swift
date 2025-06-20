@@ -6,19 +6,12 @@
 //
 
 import SwiftUI
-//
-//struct DetailView: View {
-//    var number: Int
-//    
-//    var body: some View {
-//        Text("Detail View \(number)")
-//    }
-//    
-//    init(number: Int) {
-//        self.number = number
-//        print("Creating detail view \(number)")
-//    }
-//}
+
+struct Student: Hashable {
+    var id = UUID()
+    var name: String
+    var age: Int
+}
 
 struct ContentView: View {
     var body: some View {
@@ -28,6 +21,9 @@ struct ContentView: View {
             }
             .navigationDestination(for: Int.self) { selection in
                 Text("You selected \(selection)")
+            }
+            .navigationDestination(for: Student.self) { student in
+                Text("You selected \(student.name)")
             }
         }
     }
