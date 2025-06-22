@@ -11,19 +11,15 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             Text("Hello, world!")
-                .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button("Tap Me") {
-                            
-                        }
+            .toolbar {
+                ToolbarItemGroup(placement: .topBarLeading) {
+                    Button("Tap Me") {
                     }
-
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button("Or tap Me") {
-                            
-                        }
+                
+                    Button("Or tap Me") {
                     }
                 }
+            }
         }
     }
 }
